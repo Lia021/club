@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0 commit date:2017-09-11, commit time:10:43, hash:5bd8ac9</authoring_tool>
+    </contributor>
+    <created>2018-06-27T03:08:40</created>
+    <modified>2018-06-27T03:08:40</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera-camera" name="Camera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">49.13434</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <YF_dofdist sid="YF_dofdist" type="float">0</YF_dofdist>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_images>
+    <image id="seats_001" name="seats_001">
+      <init_from>seats.001.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="Material_001-effect">
+      <profile_COMMON>
+        <newparam sid="seats_001-surface">
+          <surface type="2D">
+            <init_from>seats_001</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="seats_001-sampler">
+          <sampler2D>
+            <source>seats_001-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="seats_001-sampler"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="Material_001-material" name="Material_001">
+      <instance_effect url="#Material_001-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane-mesh" name="Plane">
+      <mesh>
+        <source id="Plane-mesh-positions">
+          <float_array id="Plane-mesh-positions-array" count="60">-1 -1 0.03799998 1 -1 0.03799998 -1 0.9731308 0.02686911 1 0.9731308 0.02686911 -1 0.9731308 0.2126933 1 0.9731308 0.2126933 -1 2.797299 0.2126933 1 2.797299 0.2126933 -1 2.786168 0.4178021 1 2.786168 0.4178021 -1 -1 0 1 -1 0 -1 1 0 1 1 0 -1 1 0.1858242 1 1 0.1858242 -1 2.824168 0.1858242 1 2.824168 0.1858242 -1 2.824168 0.4178021 1 2.824168 0.4178021</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-normals">
+          <float_array id="Plane-mesh-normals-array" count="27">0 0.005641102 0.9999841 0 -1 0 0 0 1 0 -0.9985308 -0.05418807 0 0 -1 0 1 0 -1 0 0 1 0 0 0 -0.9985307 -0.05419039</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-map">
+          <float_array id="Plane-mesh-map-array" count="216">0.6834445 0.3414434 0.3465752 0.001698732 0.6834444 0.001698672 0.4911536 0.344841 0.5228736 0.6845856 0.4911537 0.6845856 0.6868591 0.001698732 0.9982928 0.3414434 0.6868591 0.3414435 0.5614278 0.344841 0.5964742 0.6845856 0.5614279 0.6845856 0.001707315 0.3414434 0.3431606 0.001698672 0.3431606 0.3414434 0.5262882 0.6845856 0.5580132 0.344841 0.5580133 0.6845856 0.001707255 0.6845856 0.3131414 0.3448408 0.3131415 0.6845855 0.5998888 0.6845856 0.6394936 0.344841 0.6394937 0.6845856 0.6918813 0.6788031 0.7209403 0.344841 0.7273955 0.3454852 0.3329448 0.6845855 0.3264582 0.3448408 0.3329448 0.3448408 0.6479304 0.6643392 0.6769893 0.9983013 0.6429082 0.6602532 0.6479304 0.6643392 0.6744748 0.6571025 0.6794971 0.6611885 0.6918813 0.6788031 0.7184258 0.6860398 0.6868591 0.6828891 0.6484122 0.3528601 0.6744748 0.6571025 0.6433899 0.3487742 0.6923631 0.9902821 0.7184258 0.6860398 0.723448 0.6819538 0.3165561 0.3448408 0.3230437 0.6845856 0.316556 0.6845856 0.6484122 0.3528601 0.682797 0.344841 0.6834445 0.3512639 0.6923631 0.9902821 0.7267479 0.9983013 0.6873409 0.9943681 0.6834445 0.3414434 0.3465752 0.3414435 0.3465752 0.001698732 0.4911536 0.344841 0.5228735 0.344841 0.5228736 0.6845856 0.6868591 0.001698732 0.9982926 0.001698672 0.9982928 0.3414434 0.5614278 0.344841 0.5964742 0.344841 0.5964742 0.6845856 0.001707315 0.3414434 0.001707255 0.001698732 0.3431606 0.001698672 0.5262882 0.6845856 0.5262881 0.344841 0.5580132 0.344841 0.001707255 0.6845856 0.001707255 0.3448409 0.3131414 0.3448408 0.5998888 0.6845856 0.5998888 0.344841 0.6394936 0.344841 0.6918813 0.6788031 0.6868591 0.6828891 0.7209403 0.344841 0.3329448 0.6845855 0.3264583 0.6845855 0.3264582 0.3448408 0.6479304 0.6643392 0.6834446 0.9976571 0.6769893 0.9983013 0.6479304 0.6643392 0.6429082 0.6602532 0.6744748 0.6571025 0.6918813 0.6788031 0.723448 0.6819538 0.7184258 0.6860398 0.6484122 0.3528601 0.6794971 0.6611885 0.6744748 0.6571025 0.6923631 0.9902821 0.6873409 0.9943681 0.7184258 0.6860398 0.3165561 0.3448408 0.3230437 0.3448408 0.3230437 0.6845856 0.6484122 0.3528601 0.6433899 0.3487742 0.682797 0.344841 0.6923631 0.9902821 0.7273954 0.9918784 0.7267479 0.9983013</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-map-array" count="108" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane-mesh-vertices">
+          <input semantic="POSITION" source="#Plane-mesh-positions"/>
+        </vertices>
+        <triangles material="Material_001-material" count="36">
+          <input semantic="VERTEX" source="#Plane-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane-mesh-map" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 5 2 6 6 2 7 4 2 8 7 3 9 8 3 10 6 3 11 12 4 12 11 4 13 10 4 14 14 5 15 13 5 16 12 5 17 16 4 18 15 4 19 14 4 20 18 5 21 17 5 22 16 5 23 2 6 24 10 6 25 0 6 26 0 1 27 11 1 28 1 1 29 3 7 30 11 7 31 13 7 32 3 7 33 15 7 34 5 7 35 2 6 36 14 6 37 12 6 38 7 7 39 15 7 40 17 7 41 6 6 42 14 6 43 4 6 44 9 2 45 18 2 46 8 2 47 7 7 48 19 7 49 9 7 50 6 6 51 18 6 52 16 6 53 1 0 54 3 0 55 2 0 56 3 1 57 5 1 58 4 1 59 5 2 60 7 2 61 6 2 62 7 8 63 9 8 64 8 8 65 12 4 66 13 4 67 11 4 68 14 5 69 15 5 70 13 5 71 16 4 72 17 4 73 15 4 74 18 5 75 19 5 76 17 5 77 2 6 78 12 6 79 10 6 80 0 1 81 10 1 82 11 1 83 3 7 84 1 7 85 11 7 86 3 7 87 13 7 88 15 7 89 2 6 90 4 6 91 14 6 92 7 7 93 5 7 94 15 7 95 6 6 96 16 6 97 14 6 98 9 2 99 19 2 100 18 2 101 7 7 102 17 7 103 19 7 104 6 6 105 8 6 106 18 6 107</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Camera" name="Camera" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.481132 0.7276763 0.3054208 -0.6141704 -6.50764 0 0.8953956 0.4452714 5.343665 0 0 0 1</matrix>
+        <instance_camera url="#Camera-camera"/>
+      </node>
+      <node id="Plane" name="Plane" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 0.1437826 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane-mesh" name="Plane">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material_001-material" target="#Material_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
