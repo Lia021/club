@@ -28,10 +28,20 @@
  <a-assets>
      
     <a-asset-item id="stage" src="https://rawgit.com/Lia021/club/master/new%20stage/newstage.dae"></a-asset-item>
-      
+    <a-asset-item id="bleacher-v2" src="https://rawgit.com/Lia021/club/master/new%20stage/seats.dae"></a-asset-item>
+   
+    
  </a-assets>
       
       
  <!--stage-->
      
- <a-entity position="0 0 0" scale="9 9 9" rotation="0 -90 0" collada-model="#stage"n-mesh-collider="type: environment; convex: false"></a-entity>
+ <a-entity position="0 0 -1" scale="25 25 25" rotation="0 -90 0" collada-model="#stage"n-mesh-collider="type: environment; convex: false"></a-entity>
+
+ <!--bleacher-v2-->
+     
+  <a-entity position="0 0 -1" scale="5 4 4"rotation="0 180 0"  collada-model="#bleacher-v2"n-mesh-collider="type: environment; convex: false"></a-entity>
+ 
+ <!-- Textured plane parallel to ground. -->
+ 
+ <a-plane position="0 0 -1" repeat="11 11"src="https://rawgit.com/Lia021/stage/master/gray%20carpet.jpg" height="19" width="19"altspace-cursor-collider="enabled: false" rotation="-90 0 0"></a-plane>
