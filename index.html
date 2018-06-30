@@ -7,19 +7,84 @@
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
   <script src="https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
   <script>
-    altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
-          window.head = skeleton.getJoint('Head');
+    altspace.getThreeJSTrackingSkeleton().then(function(skeleton) {
+      window.head = skeleton.getJoint('Head');
+    });
+
+    AFRAME.registerComponent('altspace-look-at', {
+      init: function () {
+        if(!window.altspace || !altspace.inClient) return;
+      },
+      tick: function () {
+        if(!window.head || !this.el.object3D) return;
+        this.el.object3D.lookAt(window.head.position); 
+      }
+    });
+
+    AFRAME.registerComponent("restricted-zone", {
+      schema: {
+        userids: { type: "array" },
+        target: { type: "string" },
+        enabled: { type: "boolean", default: true }
+      },
+
+      init: function() {
+        var self = this;
+
+        altspace.getUser().then(function(user) {
+          altspace.getThreeJSTrackingSkeleton().then(function(skeleton) {
+            self.user = user;
+
+            self.el.sceneEl.object3D.add(skeleton);
+            self.avatar = skeleton.getJoint('Spine');
+
+            self.portal = document.createElement('a-entity');
+            //self.portal.setAttribute('n-portal', 'targetEntity: #' + self.data.target);
+            //self.portal.setAttribute('visible', false);
+            self.el.sceneEl.appendChild(self.portal);
+
+            self.box = new THREE.Box3();
+          });
+
         });
-        AFRAME.registerComponent('altspace-look-at', {
-          init: function () {
-            if (!window.altspace || !altspace.inClient) { return; }
-          },
-          tick: function () {
-            if (!window.head || !this.el.object3D) { return; }
-            this.el.object3D.lookAt(window.head.position); 
+      },
+
+      tick: function() {
+        var self = this;
+
+        if(self.box) {
+          self.box.setFromObject(self.el.object3D);
+          window.test = function() { console.log(self.box, self.el.object3D, self.avatar.position); }
+
+          var isWhitelistedUser = (!self.data.enabled || self.user.isModerator || (self.data.userids.length > 0 && self.data.userids.indexOf(self.user.userId) >= 0));
+          if(!isWhitelistedUser && self.avatar && self.box.containsPoint(self.avatar.position)) {
+            self.portal.setAttribute('n-portal', 'targetEntity: #' + self.data.target);
+            self.portal.setAttribute('position', self.avatar.position);
+          } else {
+            self.portal.removeAttribute('n-portal');
           }
-        })
-  </script>
+        }
+      }
+    });
+        
+    AFRAME.registerComponent("hide-restricted-entity", {
+                schema: {
+                    userids: { type: "array" },
+                    enabled: { type: "boolean", default: true }
+                },
+
+                init: function() {
+                    altspace.getUser().then((function(user) {
+                        this.user = user;
+                    }).bind(this));
+                },
+
+                tick: function() {
+                    var isWhitelistedUser = this.user && (!this.data.enabled || this.user.isModerator || (this.data.userids.length > 0 && this.data.userids.indexOf(this.user.userId) >= 0));
+                    this.el.setAttribute('visible', isWhitelistedUser);
+                }
+            });
+</script>
 
  
   <body>
